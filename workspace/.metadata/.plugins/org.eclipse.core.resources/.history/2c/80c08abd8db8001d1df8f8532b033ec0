@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<sub-flow name="setCode" doc:id="f2b5a036-5029-46a1-b538-97c0ebca389e" >
+		<set-variable value='#[message.attributes.queryParams.code default "SFO"]' doc:name="code" doc:id="98f0190c-7d63-48ea-a621-6e8499837601" variableName="code" />
+	</sub-flow>
+	<flow name="getAmericanFlights" doc:id="ad3c6b8b-49f0-41ab-b4a0-341d34725ff6" >
+		<http:listener doc:name="GET /american" doc:id="453f3714-d148-4789-a8aa-10765141573e" config-ref="mua-flights-api-httpListenerConfig" path="/american" allowedMethods="GET"/>
+		<flow-ref doc:name="setCode" doc:id="ed2f5a88-8f4f-4928-8eed-d4d9e12935d6" name="setCode" />
+	</flow>
+</mule>

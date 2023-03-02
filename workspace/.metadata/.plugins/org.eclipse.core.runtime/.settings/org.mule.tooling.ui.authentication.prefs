@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+org.mule.tooling.amc.apps={"userProjectMap"\:{"arpansee"\:{"training4-american-ws"\:"{\\"applicationName\\"\:\\"training4-american-ws-ac20230227\\",\\"muleRuntime\\"\:\\"4.4.0\\",\\"properties\\"\:{}}"}}}
+org.mule.tooling.ui.properties.enable.api.dependencies=true

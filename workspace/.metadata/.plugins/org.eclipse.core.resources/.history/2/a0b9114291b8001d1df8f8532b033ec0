@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:american-flights-api="http://www.mulesoft.org/schema/mule/american-flights-api"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/american-flights-api http://www.mulesoft.org/schema/mule/american-flights-api/current/mule-american-flights-api.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<sub-flow name="setCode" doc:id="f2b5a036-5029-46a1-b538-97c0ebca389e" >
+		<set-variable value='#[message.attributes.queryParams.code default "SFO"]' doc:name="code" doc:id="98f0190c-7d63-48ea-a621-6e8499837601" variableName="code" />
+	</sub-flow>
+	<flow name="getAmericanFlights" doc:id="ad3c6b8b-49f0-41ab-b4a0-341d34725ff6" >
+		<http:listener doc:name="GET /american" doc:id="453f3714-d148-4789-a8aa-10765141573e" config-ref="mua-flights-api-httpListenerConfig" path="/american" allowedMethods="GET"/>
+		<flow-ref doc:name="setCode" doc:id="ed2f5a88-8f4f-4928-8eed-d4d9e12935d6" name="setCode" />
+		<american-flights-api:get-flights doc:name="Get flights" doc:id="62a764ef-7fa1-48bc-89f2-6a4370cade2b" config-ref="American_Flights_API_Config" client-id="${american.client_id}" client-secret="${american.client_secret}" destination="#[vars.code]"/>
+		<ee:transform doc:name="[American] to [Flight]" doc:id="31b0c520-a4a7-4b68-9f15-d192be41c352" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload map ( payload01 , indexOfPayload01 ) -> {
+	airlineName: "American",
+	availableSeats: payload01.emptySeats,
+	departureDate: payload01.departureDate,
+	destination: payload01.destination,
+	flightCode: payload01.code,
+	origination: payload01.origin,
+	planeType: payload01.plane."type",
+	price: payload01.price
+} as Object {
+	class : "com.mulesoft.training.Flight"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="711dbc9e-e895-4952-8897-20e62fabb2cc" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="helloFlow" doc:id="3b221d1b-153d-41ee-83c2-f8447c448354" >
+		<http:listener doc:name="/hello" doc:id="13475288-3201-47f0-8f80-2f5668423e20" path="/hello" config-ref="HTTP_Listener_config"/>
+		<set-variable value='#[attributes.queryParams.fname default""]' doc:name="firstName" doc:id="22407c4d-9df3-4506-acb3-3dd22e155feb" variableName="firstName"/>
+		<set-payload value='#["Hello " ++ vars.firstName]' doc:name="Set Payload" doc:id="d7a88679-32e7-4d06-9744-6b4fc2b88591" />
+<!-- [STUDIO:"goodbyeFlow"]		<flow-ref doc:name="goodbyeFlow" doc:id="7a097e1d-1fc6-4f81-b59c-3a412cdf79d9" name="goodbyeFlow"/> [STUDIO] -->
+		<logger level="INFO" doc:name="Logger" doc:id="f3828916-00b1-4ede-ac22-ffeee5c1a846"/>
+	</flow>
+	<flow name="goodbyeFlow" doc:id="8e2e2c1d-8fb2-4fc2-b7c6-1a2ad1cc1537" >
+		<http:listener doc:name="/goodbye" doc:id="14f17865-47c4-4fc5-a249-fb113b0b4226" config-ref="HTTP_Listener_config" path="/goodbye"/>
+		<set-variable value="Mule" doc:name="lastName" doc:id="33527832-b7f3-4f62-af50-143b215b4f70" variableName="lastName"/>
+		<set-payload value="Goodbye Flow" doc:name="Set Payload" doc:id="5bd7ac70-1f66-407a-8675-83c34e4716bb" />
+		<logger level="INFO" doc:name="Logger" doc:id="fc77595d-cd96-4569-9467-3b07782d315e" />
+	</flow>
+</mule>

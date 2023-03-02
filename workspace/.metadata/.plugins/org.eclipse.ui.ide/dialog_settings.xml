@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="org.eclipse.draw2d:3.10.100.201606061308"/>
+		<item value="org.eclipse.egit:6.1.0.202203080745-r"/>
+		<item value="org.eclipse.emf.common:2.25.0.v20220123-0838"/>
+		<item value="org.eclipse.emf.ecore:2.27.0.v20220123-0838"/>
+		<item value="org.eclipse.gef:3.11.0.201606061308"/>
+		<item value="org.eclipse.help:2.3.900.v20220308-0310"/>
+		<item value="org.eclipse.jdt:3.18.1100.v20220308-0310"/>
+		<item value="org.eclipse.jgit.gpg.bc:6.1.0.202203080745-r"/>
+		<item value="org.eclipse.jgit.http.apache:6.1.0.202203080745-r"/>
+		<item value="org.eclipse.jgit.ssh.apache:6.1.0.202203080745-r"/>
+		<item value="org.eclipse.jgit:6.1.0.202203080745-r"/>
+		<item value="org.eclipse.platform:4.23.0.v20220308-0722"/>
+		<item value="org.eclipse.rcp:4.23.0.v20220308-0722"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.25.0.v202201160258"/>
+		<item value="org.eclipse.xsd.edit:2.14.0.v20210924-1719"/>
+		<item value="org.eclipse.xsd:2.20.0.v20211216-0527"/>
+		<item value="org.mule.apieditor:3.2.0"/>
+		<item value="org.mule.tooling.extension.server.4.4.0.ee:7.11.0.202301121310"/>
+		<item value="org.mule.tooling.munit.extension:2.7.9.202209201447"/>
+		<item value="org.mule.tooling.studio:7.14.0.202210251126"/>
+		<item value="org.mule.tooling:7.14.0.202210251126"/>
+	</list>
+</section>
