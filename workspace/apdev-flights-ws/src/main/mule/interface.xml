@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
     <flow name="mua-flights-api-main">
         <http:listener path="/api/*" config-ref="mua-flights-api-httpListenerConfig">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -120,37 +120,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\flights:mua-flights-api-config">
-        <ee:transform>
-            <ee:message>
-                <ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-[
-  {
-    airline: "United",
-    flightCode: "ER38sd",
-    fromAirportCode: "LAX",
-    toAirportCode: "SFO",
-    departureDate: "May 21, 2016",
-    emptySeats: 0,
-    totalSeats: 200,
-    price: 199,
-    planeType: "Boeing 737"
-  }, 
-  {
-    airline: "Delta",
-    flightCode: "ER0945",
-    fromAirportCode: "PDX",
-    toAirportCode: "CLE",
-    departureDate: "June 1, 2016",
-    emptySeats: 24,
-    totalSeats: 350,
-    price: 450,
-    planeType: "Boeing 747"
-  }
-]]]></ee:set-payload>
-            </ee:message>
-        </ee:transform>
+		<flow-ref doc:name="getFlights" doc:id="19983fb4-da03-43ca-933e-67f4410ad94a" name="getFlights"/>
     </flow>
     <flow name="post:\flights:application\json:mua-flights-api-config">
         <ee:transform>
