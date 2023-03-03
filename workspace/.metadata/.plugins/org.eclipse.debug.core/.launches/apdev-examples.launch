@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.mule.tooling.runtime.muleServerLaunchType">
+    <stringAttribute key="clear_data" value="PROMPT"/>
+    <booleanAttribute key="consoleEnabled" value="true"/>
     <stringAttribute key="launch_mule_server_version" value="org.mule.tooling.server.4.4.0.ee"/>
-    <stringAttribute key="mule-agent-port" value="52459"/>
-    <stringAttribute key="mule-agent-token-auth" value="214767ff-7f65-4bb3-9247-217e34c6354b"/>
+    <stringAttribute key="maven.command.line" value=""/>
+    <booleanAttribute key="maven.snapshot.updates" value="false"/>
+    <stringAttribute key="mule-agent-port" value="57835"/>
+    <stringAttribute key="mule-agent-token-auth" value="72192818-a4ee-4c8c-b021-995bf6da82b7"/>
     <listAttribute key="mule-project-names">
         <listEntry value="apdev-examples"/>
     </listAttribute>
+    <intAttribute key="mule.debug.payload.max.collection.size" value="100"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="apdev-examples"/>
     <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-M-XX:-UseBiasedLocking -M-Dfile.encoding=UTF-8 -M-XX:+UseG1GC -M-XX:+UseStringDeduplication"/>
+    <intAttribute key="remote-debug-max-stream-size" value="2"/>
+    <intAttribute key="remote-debug-port" value="6666"/>
+    <booleanAttribute key="remote-debug-suspend" value="false"/>
 </launchConfiguration>

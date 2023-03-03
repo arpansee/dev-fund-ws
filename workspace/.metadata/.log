@@ -5562,3 +5562,192 @@ Caused by: org.apache.http.NoHttpResponseException: studio-metrics-report.cloudh
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
 	at com.mulesoft.telemetry.TelemetryHttpClient.send(TelemetryHttpClient.java:107)
 	... 8 more
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 19:27:49.590
+!MESSAGE  *** 11560 EmbeddedMavenRunner [configuration=DefaultMavenRunnerConfiguration [externalInstallation=false, mavenInstallationHome=null, mavenOpts=]]
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 19:35:10.718
+!MESSAGE  *** 2185 EmbeddedMavenRunner [configuration=DefaultMavenRunnerConfiguration [externalInstallation=false, mavenInstallationHome=null, mavenOpts=]]
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 19:40:19.330
+!MESSAGE  *** 2281 EmbeddedMavenRunner [configuration=DefaultMavenRunnerConfiguration [externalInstallation=false, mavenInstallationHome=null, mavenOpts=]]
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 19:40:53.799
+!MESSAGE  *** 2071 EmbeddedMavenRunner [configuration=DefaultMavenRunnerConfiguration [externalInstallation=false, mavenInstallationHome=null, mavenOpts=]]
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 19:58:53.334
+!MESSAGE  *** 10734 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.6.0, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -nsu -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:00:47.944
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 3240]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:00:47.970
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 3240]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:00:48.049
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 3240]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:00:48.049
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 7264]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:00:48.054
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 7264]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:00:48.116
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 7264]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 20:01:08.773
+!MESSAGE  *** 10516 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.6.0, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -nsu -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:01:47.729
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 128]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:01:47.736
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 128]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:01:47.812
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 128]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:01:47.812
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 2096]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:01:47.812
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 2096]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:01:47.891
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 2096]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.core 4 0 2023-03-02 20:02:18.429
+!MESSAGE There was a problem while sending events to Amplitude
+!STACK 0
+com.mulesoft.telemetry.SendBundleException: HTTP POST failed
+	at com.mulesoft.telemetry.TelemetryHttpClient.send(TelemetryHttpClient.java:109)
+	at com.mulesoft.telemetry.DefaultTelemetryService.send(DefaultTelemetryService.java:234)
+	at com.mulesoft.telemetry.DefaultTelemetryService.sendEvents(DefaultTelemetryService.java:226)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.http.NoHttpResponseException: studio-metrics-report.cloudhub.io:443 failed to respond
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:141)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
+	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
+	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at com.mulesoft.telemetry.TelemetryHttpClient.send(TelemetryHttpClient.java:107)
+	... 8 more
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 20:07:13.412
+!MESSAGE  *** 10406 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.6.0, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -nsu -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:09:24.021
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 444]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:09:24.023
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 444]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:09:24.102
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 444]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:09:24.102
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 636]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:09:24.102
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 636]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:09:24.179
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 636]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 20:24:40.870
+!MESSAGE  *** 10782 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.6.0, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -nsu -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:27:26.515
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 1572]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:27:26.516
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 1572]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:27:26.605
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 1572]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:27:26.605
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 6836]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:27:26.605
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 6836]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:27:26.684
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 6836]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 20:39:41.253
+!MESSAGE  *** 10895 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.6.0, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -nsu -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:41:07.222
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 1220]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:41:07.222
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 1220]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:41:07.302
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 1220]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:41:07.302
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 3784]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:41:07.302
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 3784]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:41:07.381
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 3784]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 20:41:46.811
+!MESSAGE  *** 10766 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.6.0, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -nsu -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:44:38.482
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 5248]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:44:38.482
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 5248]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:44:38.577
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 5248]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:44:38.577
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 4108]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:44:38.577
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 4108]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:44:38.655
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 4108]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.maven 1 0 2023-03-02 20:47:33.829
+!MESSAGE  *** 11063 EmbeddedMavenRunner [configuration=MavenPreferences [isDontWarnAgainIfNoInstallationFoundChecked()=false, isGlobalMavenSupportEnabled()=true, getMavenInstallationHome()=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.6.0, getMavenOpts()=, getDefaultGroupId()=com.mycompany, getBaseCommandline()=mvn clean package -nsu -DskipMunitTests, isDisplayRuntimeVersionWarning()=true, isExternalInstallation()=false]]
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:57:47.823
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 4752]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:57:47.823
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 4752]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:57:47.910
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 4752]] indicate retry action is necessary, moving on to next one
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:57:47.910
+!MESSAGE Starting shell termination command "[taskkill, /F, /PID, 4076]"
+
+!ENTRY org.mule.tooling.runtime 1 0 2023-03-02 20:57:47.910
+!MESSAGE Finished shell termination command "[taskkill, /F, /PID, 4076]"
+
+!ENTRY org.mule.tooling.runtime 2 0 2023-03-02 20:57:47.982
+!MESSAGE Termination command ShellTerminationCommand [getTerminationCommand()=[taskkill, /F, /PID, 4076]] indicate retry action is necessary, moving on to next one

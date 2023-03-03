@@ -1,4 +1,0 @@
-%dw 2.0
-
-type auto_c17af858_936b_4b6a_a9dd_e5f5f6cce705_Output_Variables_airline = String | Null
-

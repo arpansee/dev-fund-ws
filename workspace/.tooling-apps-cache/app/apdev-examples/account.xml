@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:jms="http://www.mulesoft.org/schema/mule/jms"
+	xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="8ffa7b20-89b2-4ace-a92f-de317809a607" >
+		<db:my-sql-connection host="iltdb.learn.mulesoft.com" port="3306" user="mule" password="mule" database="training" />
+	</db:config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="b2194dcb-07b8-4b9b-b016-ee3b02aa874b" >
+		<file:connection workingDir="C:\Users\Administrator\Desktop\DEX460_APDevFundamentals_studentFiles_01feb2023\DEX460_APDevFundamentals_studentFiles_01feb2023\resources" />
+	</file:config>
+	<jms:config name="JMS_Config" doc:name="JMS Config" doc:id="85cae8da-04b5-495c-b144-67ea2ed95b2a" >
+		<jms:active-mq-connection >
+			<jms:factory-configuration />
+		</jms:active-mq-connection>
+	</jms:config>
+	<flow name="syncDBAccountsByPostal" doc:id="dbcf6aba-93fe-485f-adc7-5707ae08ce0b" >
+		<scheduler doc:name="Scheduler" doc:id="731fe909-7dde-4f31-984e-3bb946353b9d" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="10" timeUnit="SECONDS"/>
+			</scheduling-strategy>
+		</scheduler>
+		<os:retrieve doc:name="lastAccountID" doc:id="f1638199-784c-40ba-b9b8-d154ae1daedb" key="lastAccountID" target="lastAccountID">
+			<os:default-value ><![CDATA[0]]></os:default-value>
+		</os:retrieve>
+		<db:select doc:name="Accounts" doc:id="152d30c8-5be8-4681-a903-5dd5d9401c67" config-ref="Database_Config">
+			<db:sql ><![CDATA[SELECT * 
+FROM accounts 
+WHERE postal = :postal 
+AND accountID > :lastAccountID
+
+]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{postal: "700089", lastAccountID: vars.lastAccountID}]]]></db:input-parameters>
+		</db:select>
+		<choice doc:name="Choice" doc:id="5e9de3b5-e002-4ca3-9caf-1a0983f2b78d" >
+			<when expression="#[not isEmpty(payload)]">
+				<os:store doc:name="Store" doc:id="26b5c7e3-ea98-4004-b836-91ead939b8e8" key="lastAccountID">
+					<os:value ><![CDATA[#[max(payload.*accountID)]]]></os:value>
+				</os:store>
+				<file:write doc:name="DBAccountsPostal" doc:id="1a8fcd98-9e41-4469-99c0-65c07f2d7df0" config-ref="File_Config" path="output\DBAccountsPostal.csv" mode="APPEND">
+			<file:content><![CDATA[#[output application/csv header=false
+---
+payload]]]></file:content>
+		</file:write>
+				<jms:publish doc:name="Publish" doc:id="a49bd3e8-f963-4248-8e98-5c9c081f122f" config-ref="JMS_Config" destination="accountsQ">
+			<jms:message>
+				<jms:body><![CDATA[#[output application/json
+---
+payload]]]></jms:body>
+			</jms:message>
+		</jms:publish>
+				<logger level="INFO" doc:name="Logger" doc:id="1445144d-85d8-48e5-b78f-0618c89ac84c" message="#[output application/csv&#10;---&#10;payload]" />
+			</when>
+			<otherwise >
+				<logger level="INFO" doc:name="No New Accounts" doc:id="ddabd618-9e52-4cd7-8716-433f75165bed" message="No New Accounts"/>
+			</otherwise>
+		</choice>
+	</flow>
+	<flow name="receiveAccountsQ" doc:id="3074b88d-e173-4bd3-8781-21523e998edd" >
+		<jms:listener doc:name="On New Message" doc:id="c10aa8f3-aca8-4708-9ec5-ce52207cb372" config-ref="JMS_Config" destination="accountsQ">
+			<jms:consumer-type >
+				<jms:queue-consumer />
+			</jms:consumer-type>
+		</jms:listener>
+		<logger level="INFO" doc:name="payload" doc:id="f7710343-6047-48e6-bb91-25b4c9485a52" message="#[payload]"/>
+	</flow>
+</mule>
