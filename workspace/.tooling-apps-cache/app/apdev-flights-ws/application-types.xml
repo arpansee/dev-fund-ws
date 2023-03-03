@@ -639,4 +639,13 @@ type auto_b30035b5_644a_4cef_a319_e5ba4b433914_Output_Variables_outboundHeaders 
       </types:input-event>
     </types:processor-declaration>
   </types:enrichment>
+  <types:enrichment select="#ae317306-bb14-4ebe-ab09-869477b802ee">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="flights_xml"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
 </types:mule>

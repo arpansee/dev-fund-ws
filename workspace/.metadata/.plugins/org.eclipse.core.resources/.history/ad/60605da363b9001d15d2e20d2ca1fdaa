@@ -225,10 +225,9 @@ data: {
 		<ee:transform doc:name="array" doc:id="2134de10-5ffe-4b37-80c7-bb10965898ee" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
-output application/java
+output application/json
 ---
-{
-}]]></ee:set-payload>
+payload.price]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>

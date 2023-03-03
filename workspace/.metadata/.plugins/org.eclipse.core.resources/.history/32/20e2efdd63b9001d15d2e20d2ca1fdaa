@@ -227,54 +227,9 @@ data: {
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-flights: {(payload map (obj,ind)-> {
-	"flight": obj
-})}]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
-		<ee:transform doc:name="xml" doc:id="ae317306-bb14-4ebe-ab09-869477b802ee" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-import dasherize from dw::core::Strings
-
-output application/json
-
-type Currency = String {format: "#.00"}
-//var numSeats = 300
-//var numSeats = (x=200)-> x
-//var numSeats = (planeType)->
-// if(planeType contains('737'))
-// 150
-// else
-// 300
-
-fun getNumSeats(planeType) = do {
-	var maxSeats = 
-    if(planeType contains('737'))
-      150
-    else
-      300
-    ---
-    maxSeats
-}
----
-flights: 
-       ((payload..*return map (object)-> {
-			dest: object.destination,
-			//price: object.price as Number {class: "java.lang.Double"}, //only Java output will understand this
-			price: object.price as Number as Currency as Number,
-			totalSeats: getNumSeats(object.planeType),
-			plane: dasherize(replace(object.planeType,"Boing") with "Boeing"),
-			date: object.departureDate as Date {format: "yyyy/MM/dd"}
-					as String {format: "MMMM dd, yyyy"},
-			emptySeats: object.emptySeats as Number
-}) 
-//distinctBy $
-filter ($.emptySeats > 0)
-orderBy $.date
-orderBy $.price)[-1 to 0]
-
-]]></ee:set-payload>
+flights: payload map (obj,ind)-> {
+	"flight$(ind)": obj
+}]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
